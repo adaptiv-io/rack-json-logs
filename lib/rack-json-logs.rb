@@ -65,6 +65,8 @@ module Rack
         time:     start_time.to_i,
         duration: (Time.now - start_time).round(3),
         request:  "#{env['REQUEST_METHOD']} #{env['PATH_INFO']}",
+        method:   env['REQUEST_METHOD'],
+        path:     env['PATH_INFO'],
         status:   (response || [500]).first,
         from:     @options[:from],
         stdout:   stdout_buffer.string,
@@ -120,4 +122,3 @@ module Rack
     end
   end
 end
-
